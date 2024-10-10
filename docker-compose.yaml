@@ -1,43 +1,20 @@
 version: '3.8'
 
 services:
-  postgresql:
-    image: postgres:latest
-    container_name: postgres_ws
-    restart: always
-    environment:
-      POSTGRES_PASSWORD: admin@123
-      POSTGRES_USER: admin
-      POSTGRES_DB: lanchonete_ws
-    ports:
-      - 5432:5432
-    volumes:
-      - ./data:/var/lib/postgresql/data
-
-  adminer:
-    image: adminer
-    restart: always
-    ports:
-      - 8081:8080
 
   lanchonetews:
-    build:
-      context: ./
+    image: wstecnologia/lanchonetews:latest
     restart: always
     ports:
-      - 3000:3000
+      - "3000:3000"
     environment:
-      DB_HOST: postgresql
-      DB_USER: admin
-      DB_PASSWORD: admin@123
-      DB_DATABASE: lanchonete_ws
-    depends_on:
-      - postgresql
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_DATABASE: ${DB_DATABASE}
 
-  sql-runner:
-    image: postgres:latest
-    depends_on:
-      - postgresql
-    volumes:
-      - ./sql:/docker-entrypoint-initdb.d
-    command: bash -c "sleep 10 && PGPASSWORD=admin@123 psql -h postgresql -U admin -d lanchonete_ws -a -f /docker-entrypoint-initdb.d/create_table.sql"
+  tech-webhook:
+    image: wstecnologia/tech-webhook:latest
+    restart: always
+    ports:
+      - "3001:3001"
