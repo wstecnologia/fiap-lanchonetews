@@ -1,5 +1,5 @@
 import pgPromise from "pg-promise"
-
+//Adicionado ssl false
 const pgp = pgPromise()
 const PostgreSql = pgp({
   host: process.env.DB_HOST,
