@@ -6,24 +6,25 @@ Este é um sistema de pedidos para uma lanchonete desenvolvido em NodeJs/TypeScr
 
 ### Configuração do Ambiente
 
-Clone este repositório
-https://github.com/wstecnologia/techchallenge-faseII para o seu computador (acessar a branch main).
-e https://github.com/wstecnologia/tech-webhook (acessar a branch master)
+1. Clone este repositório
+   https://github.com/wstecnologia/fiap-lanchonetews para o seu computador (acessar a branch main).
+   e https://github.com/wstecnologia/tech-webhook (acessar a branch master)
 
-Renomeie o arquivo .env.example para .env (para executar o projeto techchallenge-faseII) e substitua pelo conteúdo enviado na documentação do projeto.
+2. Renomeie o arquivo .env.example para .env (para executar o projeto fiap-lanchonetews) e substitua pelo conteúdo enviado na documentação do projeto. ()
 
-Para iniciar a aplicação, execute o comando “docker compose up --build”, aguarde o fim da criação das imagens para o docker rodar o script de criação/inserção das tabelas. (É necessário que o docker esteja instalado na máquina para o correto funcionamento)
+3. Para iniciar a aplicação, execute o comando “docker-compose up”, aguarde o fim da criação das imagens para o docker.
 
-Após a execução do comando acima, o sistema será carregado, junto com suas dependências.
-Uso
-Acesse a documentação swagger da aplicação através do navegador web, digitando o endereço http://localhost:3000/api-docs/.
-e http://localhost:3001/api-docs/ para acessar o webhook
+4. Após a execução do comando acima, subistitua (ou inclua) as informações da instância do BD no arquivo .env criado no item 2.
+
+### Uso
+
+Acesse a documentação swagger da aplicação através do navegador web, digitando o endereço:
+=> http://localhost:3000/api-docs/
+=> http://localhost:3001/api-docs/ para acessar o webhook
 
 ### Banco de Dados
 
-Foi utilizado o banco de dados postgresql, a imagem do mesmo está configurada no docker-compose e vai subir junto da aplicação. Ao subir, o docker vai rodar o script de criação/inserção das tabelas.
-Foi incluído no docker-compose uma ide chamada adminer, para possíveis consultas, caso necessário.
-Link para acessar a ide do banco: http://localhost:8081/
+Foi utilizado o banco de dados postgresql. No dockerhub pode ser baixado a ultima versão da imagem pelo comando "docker pull postgres:latest", e rodar o script que esta na pasta scrips.
 
 #### Rota para novo pedido: `/api/order/new`
 
